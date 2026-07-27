@@ -2,8 +2,17 @@ from fastapi import FastAPI, Depends, HTTPException, File, UploadFile, Form
 from schemas import ResumeRequest, ResumeReviewResponse
 from services import analyze_resume, get_project_metadata
 from utils.pdf import extract_pdf_text
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/info")
 def info(project_metadata: dict = Depends(get_project_metadata)):
