@@ -1,6 +1,7 @@
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, File, UploadFile, Form
 from schemas import ResumeRequest, ResumeReviewResponse
 from services import analyze_resume, get_project_metadata
+from utils.pdf import extract_pdf_text
 
 app = FastAPI()
 
@@ -13,9 +14,31 @@ def info(project_metadata: dict = Depends(get_project_metadata)):
     "/review",
     response_model=ResumeReviewResponse
 )
-def review_resume(request: ResumeRequest):
+async def review_resume( resume: UploadFile = File(...), job_description: str = Form(..., min_length=50)):
+
+    if resume.content_type != "application/pdf":
+        raise HTTPException(
+        status_code=400,
+        detail="Only PDF resumes are supported."
+    )
+    
+
     try:
-        return analyze_resume(request.resume, request.job_description)
+        file_bytes = await resume.read()
+        resume_text = extract_pdf_text(file_bytes)
+    except Exception:
+        raise HTTPException(
+            status_code=400,
+            detail="Unable to read the uploaded PDF."
+        )
+
+    if len(resume_text) < 50:
+        raise HTTPException(
+        status_code=400,
+        detail="Could not extract sufficient text from the PDF."
+    )
+    try:
+        return analyze_resume(resume_text, job_description)
 
     except Exception:
         raise HTTPException(

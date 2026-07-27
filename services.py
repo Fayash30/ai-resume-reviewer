@@ -62,7 +62,7 @@ Treat required qualifications as more important than preferred qualifications.
 Missing preferred qualifications should reduce the score only slightly.
 Do not award points for skills or experience that are not explicitly supported
 by the resume.
-
+pip install pypdf python-multipart
 ----- START RESUME -----
 
 {resume}
