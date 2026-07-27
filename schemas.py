@@ -6,12 +6,17 @@ class ResumeRequest(BaseModel):
         min_length=50,
         description="Extracted resume text to analyze"
     )
- 
+    job_description: str = Field(
+        min_length=50,
+        description="Job description for context"
+    )
+
 class ResumeReviewResponse(BaseModel):
-    score: int
+    match_score: int = Field(ge=0, le=100)
     strengths: list[str]
     weaknesses: list[str]
-    summary: str
+    matched_keywords: list[str]
+    missing_keywords: list[str]
     recommendations: list[str]
-    keywords: list[str]
+    summary: str
     

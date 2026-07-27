@@ -12,12 +12,25 @@ client = genai.Client(
 )
 
 
-def build_resume_prompt(resume: str) -> str:
+def build_resume_prompt(resume: str, job_description: str) -> str:
     return f"""
 You are an experienced technical recruiter reviewing a resume
 for AI Engineer roles.
 
-Evaluate the candidate based only on the supplied resume.
+Evaluate how well the supplied resume matches the supplied job description.
+
+Use the job description only to determine the role's requirements.
+Use only the resume as evidence of the candidate's skills, experience,
+education, projects, and qualifications.
+
+Do not assume the candidate has a requirement simply because it appears
+in the job description.
+
+----- START JOB DESCRIPTION -----
+
+{job_description}
+
+----- END JOB DESCRIPTION -----
 
 Focus on:
 - AI/ML skills
@@ -27,8 +40,28 @@ Focus on:
 - Professional experience
 - ATS compatibility
 
+Calculate the match score from 0 to 100 using:
+
+- Required technical skills: 40%
+- Relevant professional experience: 25%
+- Relevant projects: 15%
+- Education/certifications when required: 10%
+- Overall role/ATS alignment: 10%
+
+identify strengths and weaknesses, matched and missing keywords, and provide recommendations for improvement.
+
 Do not invent experience, skills, projects, or qualifications
 that are not present in the resume.
+
+
+When a job requirement lists alternatives using terms such as
+"or", satisfying any one acceptable alternative satisfies that requirement.
+Do not list the other alternatives as missing keywords.
+
+Treat required qualifications as more important than preferred qualifications.
+Missing preferred qualifications should reduce the score only slightly.
+Do not award points for skills or experience that are not explicitly supported
+by the resume.
 
 ----- START RESUME -----
 
@@ -51,9 +84,9 @@ GEMINI_MODEL = os.getenv(
     "GEMINI_MODEL",
     "gemini-3-flash-preview"
 )
-def analyze_resume(resume: str) -> ResumeReviewResponse:
+def analyze_resume(resume: str, job_description: str) -> ResumeReviewResponse:
 
-    prompt = build_resume_prompt(resume)
+    prompt = build_resume_prompt(resume, job_description)
 
     response = client.models.generate_content(
         model=GEMINI_MODEL,

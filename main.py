@@ -15,7 +15,7 @@ def info(project_metadata: dict = Depends(get_project_metadata)):
 )
 def review_resume(request: ResumeRequest):
     try:
-        return analyze_resume(request.resume)
+        return analyze_resume(request.resume, request.job_description)
 
     except Exception:
         raise HTTPException(
