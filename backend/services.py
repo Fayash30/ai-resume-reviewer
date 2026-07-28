@@ -1,11 +1,12 @@
-from schemas import ResumeReviewResponse
+from .schemas import ResumeReviewResponse
+from pathlib import Path
 import os
 
 from dotenv import load_dotenv
 from google import genai
 
 
-load_dotenv()
+load_dotenv(Path(__file__).parent / ".env")
 
 client = genai.Client(
     api_key=os.getenv("GEMINI_API_KEY")
@@ -62,7 +63,6 @@ Treat required qualifications as more important than preferred qualifications.
 Missing preferred qualifications should reduce the score only slightly.
 Do not award points for skills or experience that are not explicitly supported
 by the resume.
-pip install pypdf python-multipart
 ----- START RESUME -----
 
 {resume}

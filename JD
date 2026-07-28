@@ -1,0 +1,37 @@
+AI Engineer
+
+We are looking for an AI Engineer to build and deploy production-grade Generative AI applications.
+
+REQUIRED SKILLS
+
+- Strong Python programming skills.
+- Experience developing REST APIs using FastAPI.
+- Hands-on experience with Large Language Models and Generative AI.
+- Experience building Retrieval-Augmented Generation (RAG) systems.
+- Knowledge of vector databases such as FAISS, Pinecone, or Weaviate.
+- Experience with PostgreSQL.
+- Experience using Docker and containerized deployments.
+- Understanding of prompt engineering and structured LLM outputs.
+- Experience with Git and collaborative software development.
+
+PREFERRED SKILLS
+
+- Experience with AWS cloud services.
+- Knowledge of Kubernetes.
+- Experience with PyTorch.
+- Familiarity with LangChain or LangGraph.
+- Experience implementing CI/CD pipelines.
+
+RESPONSIBILITIES
+
+- Design and develop AI-powered backend services.
+- Build RAG pipelines for enterprise documents.
+- Integrate LLM APIs into production applications.
+- Develop scalable REST APIs.
+- Deploy and monitor AI applications.
+- Evaluate LLM outputs and improve system reliability.
+
+QUALIFICATIONS
+
+- Bachelor's degree in Computer Science, Information Technology, AI, or a related field.
+- 2+ years of software development experience.
