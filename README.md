@@ -52,19 +52,19 @@ https://resume-reviewer-api-a9rp.onrender.com/docs
 
 ## Landing Page
 
-![Landing](docs/images/landing.png)
+![Landing](docs/images/Landing.png)
 
 ---
 
 ## Resume Upload
 
-![Upload](docs/images/upload.png)
+![Upload](docs/images/Upload.png)
 
 ---
 
 ## AI Analysis
 
-![Analysis](docs/images/analysis.png)
+![Analysis](docs/images/Analysis.png)
 
 ---
 
