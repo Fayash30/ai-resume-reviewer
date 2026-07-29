@@ -226,34 +226,6 @@ http://localhost:8000/docs
 
 ---
 
-# 🎯 Future Improvements
-
-- Authentication
-- Resume History
-- Export Analysis as PDF
-- Multiple Resume Comparison
-- Support Multiple AI Models
-- Resume Version Tracking
-- ATS Benchmarking
-
----
-
-# 📚 What I Learned
-
-Building this project helped me gain hands-on experience with:
-
-- Building REST APIs using FastAPI
-- React frontend development
-- Google Gemini API integration
-- Prompt Engineering
-- Docker & Docker Compose
-- Cloud deployment (Render & Netlify)
-- CORS configuration
-- Environment variable management
-- Production debugging
-- Full-stack application deployment
-
----
 
 # 📄 License
 
