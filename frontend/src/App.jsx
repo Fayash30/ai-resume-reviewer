@@ -1,6 +1,6 @@
 import { useState } from "react";
-import UploadForm from "./components/UploadForm";
-import Results from "./components/Results";
+import UploadForm from "./Components/UploadForm";
+import Results from "./Components/Results";
 import "./App.css";
 
 function App() {
