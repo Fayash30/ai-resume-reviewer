@@ -63,6 +63,12 @@ def about():
         "author": "Mohamed Fayash"
     }
 
+@app.get("/")
+def root():
+    return {
+        "message": "Resume Reviewer API is running!"
+    }
+
 @app.get("/health")
 def health():
     return {
