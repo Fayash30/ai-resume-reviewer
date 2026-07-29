@@ -20,7 +20,7 @@ services:
     container_name: resume-reviewer-frontend
 
     ports:
-      - "5173:5173"
+      - "5173:80"
 
     env_file:
       - frontend/.env
