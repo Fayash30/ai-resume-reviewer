@@ -191,7 +191,11 @@ button {
   border-radius: 17px;
   background: #fafbf9;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
   text-align: center;
 }
 
@@ -199,6 +203,13 @@ button {
 .upload-box.selected {
   border-color: #4f8067;
   background: #f3f7f3;
+}
+
+.upload-box.drag-active {
+  border-color: #2f7d57;
+  background: #edf8f1;
+  transform: scale(1.02);
+  box-shadow: 0 0 0 4px rgba(47, 125, 87, 0.15);
 }
 
 .upload-box input {

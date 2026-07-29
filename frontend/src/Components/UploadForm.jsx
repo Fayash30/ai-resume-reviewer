@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+
 const API_URL = import.meta.env.VITE_API_URL;
 
 function UploadForm({ onResult }) {
@@ -7,10 +8,9 @@ function UploadForm({ onResult }) {
   const [jobDescription, setJobDescription] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [dragActive, setDragActive] = useState(false);
 
-  const handleFileChange = (event) => {
-    const file = event.target.files?.[0];
-
+  const handleResume = (file) => {
     setError("");
 
     if (!file) {
@@ -25,6 +25,29 @@ function UploadForm({ onResult }) {
     }
 
     setResume(file);
+  };
+
+  const handleFileChange = (event) => {
+    handleResume(event.target.files?.[0]);
+  };
+  const handleDragOver = (e) => {
+  e.preventDefault();
+  setDragActive(true);
+};
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    setDragActive(false);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+
+    setDragActive(false);
+
+    const file = e.dataTransfer.files?.[0];
+
+    handleResume(file);
   };
 
   const handleSubmit = async (event) => {
@@ -85,7 +108,14 @@ function UploadForm({ onResult }) {
         <div className="field">
           <label>Resume</label>
 
-          <label className={`upload-box ${resume ? "selected" : ""}`}>
+          <label
+              className={`upload-box ${
+                resume ? "selected" : ""
+              } ${dragActive ? "drag-active" : ""}`}
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+            >
             <input
               type="file"
               accept=".pdf,application/pdf"
@@ -102,7 +132,7 @@ function UploadForm({ onResult }) {
             ) : (
               <>
                 <strong>Upload your resume</strong>
-                <span>Choose a PDF file</span>
+                <span>Drag & drop a PDF here or click to browse</span>
               </>
             )}
           </label>
