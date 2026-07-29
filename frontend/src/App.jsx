@@ -5,6 +5,7 @@ import "./App.css";
 
 function App() {
   const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   return (
     <main className="app">
@@ -31,14 +32,20 @@ function App() {
       </header>
 
       <section className="container">
-        <UploadForm onResult={setResult} />
+        <UploadForm
+          onResult={setResult}
+          loading={loading}
+          setLoading={setLoading}
+        />
 
-        {result && <Results result={result} />}
+        {(loading || result) && (
+        <Results
+          result={result}
+          loading={loading}
+        />
+      )}
       </section>
 
-      <footer>
-        Built with FastAPI, Gemini & React
-      </footer>
     </main>
   );
 }

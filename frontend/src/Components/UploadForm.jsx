@@ -3,10 +3,13 @@ import { useState } from "react";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-function UploadForm({ onResult }) {
+function UploadForm({
+  onResult,
+  loading,
+  setLoading,
+}) {
   const [resume, setResume] = useState(null);
   const [jobDescription, setJobDescription] = useState("");
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [dragActive, setDragActive] = useState(false);
 

@@ -1,4 +1,8 @@
 import ScoreCircle from "./ScoreCircle";
+import Skeleton from "./Skeleton";
+import LoadingStatus from "./LoadingStatus";
+
+
 
 function ListCard({ title, items, type }) {
   return (
@@ -36,7 +40,61 @@ function KeywordGroup({ title, keywords, type }) {
   );
 }
 
-function Results({ result }) {
+function Results({ result, loading }) {
+
+  if (loading) {
+  return (
+    <section className="results">
+
+      <div className="section-heading">
+        <span className="step">02</span>
+
+        <div>
+          <h2>Your analysis</h2>
+          <LoadingStatus />
+        </div>
+      </div>
+
+      <div className="overview-card">
+        <Skeleton className="skeleton-circle" />
+
+        <div className="summary">
+          <Skeleton className="skeleton-title" />
+          <Skeleton className="skeleton-text" />
+          <Skeleton className="skeleton-text short" />
+        </div>
+      </div>
+
+      <div className="two-column">
+
+        <article className="result-card">
+          <Skeleton className="skeleton-heading" />
+          <Skeleton className="skeleton-line" />
+          <Skeleton className="skeleton-line" />
+          <Skeleton className="skeleton-line short" />
+        </article>
+
+        <article className="result-card">
+          <Skeleton className="skeleton-heading" />
+          <Skeleton className="skeleton-line" />
+          <Skeleton className="skeleton-line" />
+          <Skeleton className="skeleton-line short" />
+        </article>
+
+      </div>
+
+      <article className="result-card">
+        <Skeleton className="skeleton-heading" />
+        <Skeleton className="skeleton-chip" />
+        <Skeleton className="skeleton-chip" />
+        <Skeleton className="skeleton-chip" />
+        <Skeleton className="skeleton-chip" />
+      </article>
+
+    </section>
+  );
+}
+
   return (
     <section className="results">
       <div className="section-heading">
