@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException, File, UploadFile, Form
-from .schemas import ResumeRequest, ResumeReviewResponse
-from .services import analyze_resume, get_project_metadata
-from .utils.pdf import extract_pdf_text
+from schemas import ResumeRequest, ResumeReviewResponse
+from services import analyze_resume, get_project_metadata
+from utils.pdf import extract_pdf_text
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()

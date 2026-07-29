@@ -1,4 +1,4 @@
-from .schemas import ResumeReviewResponse
+from schemas import ResumeReviewResponse
 from pathlib import Path
 import os
 
